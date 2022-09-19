@@ -16,26 +16,16 @@ public class EditorAccess extends BasicAccess {
             System.out.println("S. Display Students | T. Display Teachers | A. Add Students | R. Display Results | X. Exit");
             System.out.print("Please enter your choice: ");
             char choice = scanner.next().toLowerCase().charAt(0);
-            switch (choice){
-                case 's':
-                    super.displayStudents();
-                    break;
-                case 't':
-                    super.displayTeachers();
-                    break;
-                case 'x':
+            switch (choice) {
+                case 's' -> super.displayStudents();
+                case 't' -> super.displayTeachers();
+                case 'x' -> {
                     System.out.println("\nLeaving the program now ...");
                     System.exit(0);
-                    break;
-                case 'r':
-                    showResults();
-                    break;
-                case 'a':
-                    addStudent();
-                    break;
-                default:
-                    System.out.println("Invalid choice");
-                    break;
+                }
+                case 'r' -> showResults();
+                case 'a' -> addStudent();
+                default -> System.out.println("Invalid choice");
             }
         }
     }

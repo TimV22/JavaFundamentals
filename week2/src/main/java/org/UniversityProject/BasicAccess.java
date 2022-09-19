@@ -18,20 +18,14 @@ public class BasicAccess {
             System.out.println("S. Display Students | T. Display Teachers |  X. Exit");
             System.out.print("Please enter your choice: ");
             char choice = scanner.next().toLowerCase().charAt(0);
-            switch (choice){
-                case 's':
-                    displayStudents();
-                    break;
-                case 't':
-                    displayTeachers();
-                    break;
-                case 'x':
+            switch (choice) {
+                case 's' -> displayStudents();
+                case 't' -> displayTeachers();
+                case 'x' -> {
                     System.out.println("\nLeaving the program now ...");
                     System.exit(0);
-                    break;
-                default:
-                    System.out.println("Invalid choice");
-                    break;
+                }
+                default -> System.out.println("Invalid choice");
             }
         }
     }

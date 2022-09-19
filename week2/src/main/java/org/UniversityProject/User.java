@@ -28,10 +28,7 @@ public abstract class User {
     }
 
     public boolean checkPassword(String password) {
-        if (password.equals(this.password)) {
-            return true;
-        }
-        return false;
+        return password.equals(this.password);
     }
 
     public int getAge(){
