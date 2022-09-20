@@ -9,8 +9,8 @@ public class Main {
     private List<User> users = Collections.emptyList();
 
     public static void main(String[] args) {
-        Main main = new Main();
-        main.Start();
+        Main program = new Main();
+        program.Start();
     }
 
     private void Start(){
@@ -38,6 +38,7 @@ public class Main {
                     new EditorAccess(users);
                 }else if(user instanceof Manager){
                     System.out.println("You are a manager");
+                    new AdminAccess(users);
                 }
                 break;
             }
