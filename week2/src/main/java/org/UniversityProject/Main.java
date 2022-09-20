@@ -46,7 +46,7 @@ public class Main {
 
     private User checkUser(String name, String password){
         for(User user : users){
-            if(user.getFirstName().toLowerCase().equals(name.toLowerCase()) && user.checkPassword(password)){
+            if(user.getFirstName().equalsIgnoreCase(name) && user.checkPassword(password)){
                 return user;
             }
         }
