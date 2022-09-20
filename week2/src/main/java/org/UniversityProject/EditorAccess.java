@@ -61,32 +61,24 @@ public class EditorAccess extends BasicAccess {
         }
         getStudentId();
 
-        studentDetailLoop();
+
     }
 
-    private void studentDetailLoop() {
+    private void studentDetailLoop(Student student){
         Scanner scanner = new Scanner(System.in);
         while(true){
             System.out.println("A. Add (update) Report | R. Display Reports | B. Back to main | X. Exit");
             System.out.print("Please enter your choice: ");
             char choice = scanner.next().toLowerCase().charAt(0);
-            switch (choice){
-                case 'a':
-                    //TODO add add/update report
-                    break;
-                case 'r':
-                    showResults();
-                    break;
-                case 'x':
+            switch (choice) {
+                case 'a' -> addNewMarks(student);
+                case 'r' -> showResults();
+                case 'x' -> {
                     System.out.println("\nLeaving the program now ...");
                     System.exit(0);
-                    break;
-                case 'b':
-                    start();
-                    break;
-                default:
-                    System.out.println("Invalid choice");
-                    break;
+                }
+                case 'b' -> start();
+                default -> System.out.println("Invalid choice");
             }
 
         }
@@ -100,36 +92,58 @@ public class EditorAccess extends BasicAccess {
                 return;
             }
             if(id > 0 && id <= users.size()){
-                showResultDetails(id);
-                return;
+                User user = users.get(id - 1);
+                if(user instanceof Student) {
+                    showResultDetails((Student)user, id);
+                    studentDetailLoop((Student)user);
+                    return;
+                }
             }
             System.out.println("Invalid id");
         }
     }
 
-    private void showResultDetails(int id){
-        User user = users.get(id - 1);
-        if(user instanceof Student){
+    private void showResultDetails(Student student, int id){
 
-            System.out.println("Student Id: " + id);
-            System.out.println("Student Name: " + user.getFirstName() + " " + user.getLastName());
-            System.out.println("Student Date of Birth: " + user.getDateOfBirth());
-            System.out.println("Student Age: " + user.getAge());
-            System.out.println("Student Group: " + ((Student) user).getGroup());
+        System.out.println("Student Id: " + id);
+        System.out.println("Student Name: " + student.getFirstName() + " " + student.getLastName());
+        System.out.println("Student Date of Birth: " + student.getDateOfBirth());
+        System.out.println("Student Age: " + student.getAge());
+        System.out.println("Student Group: " + student.getGroup());
 
-            System.out.println("\n\n     COURSES\n");
+        System.out.println("\n\n     COURSES\n");
 
-            System.out.println("Student Java Mark: " + ((Student) user).getJavaMark());
-            System.out.println("Student CSharp Mark: " + ((Student) user).getCSharpMark());
-            System.out.println("Student Python Mark: " + ((Student) user).getPythonMark());
-            System.out.println("Student PHP Mark: " + ((Student) user).getPHPMark());
+        System.out.println("Student Java Mark: " + student.getJavaMark());
+        System.out.println("Student CSharp Mark: " + student.getCSharpMark());
+        System.out.println("Student Python Mark: " + student.getPythonMark());
+        System.out.println("Student PHP Mark: " + student.getPHPMark());
 
-            System.out.println("\n\n     RESULTS\n");
+        System.out.println("\n\n     RESULTS\n");
 
-            System.out.println("Result: " + ((Student) user).getResult());
-            System.out.println("Retakes: " + ((Student) user).getRetakes());
-        }
+        System.out.println("Passed: " + student.getPassed());
+        System.out.println("Retakes: " + student.getRetakes());
 
+    }
+
+    private void addNewMarks(Student student){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Java mark: ");
+        int javaMark = scanner.nextInt();
+
+        System.out.print("Enter CSharp mark: ");
+        int cSharpMark = scanner.nextInt();
+
+        System.out.print("Enter Python mark: ");
+        int pythonMark = scanner.nextInt();
+
+        System.out.print("Enter PHP mark: ");
+        int phpMark = scanner.nextInt();
+
+        student.setJavaMark(javaMark);
+        student.setCSharpMark(cSharpMark);
+        student.setPythonMark(pythonMark);
+        student.setPHPMark(phpMark);
     }
 }
 

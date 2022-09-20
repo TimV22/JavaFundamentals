@@ -32,21 +32,18 @@ public class BasicAccess {
 
     protected void displayStudents(){
         System.out.printf("  LIST OF STUDENTS:\n%-2s %-10s %-10s %-15s %-10s %-10s \n", "Id", "FirstName", "Lastname", "Date of Birth", "Age", "Group");
-        int counter = 0;
         for(User user : users ){
             if(user instanceof Student){
-                counter++;
-                System.out.printf("%-2d %-10s %-10s %-15s %-10d %-10s  %n", counter, user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getAge(), ((Student) user).getGroup());
+                System.out.printf("%-2d %-10s %-10s %-15s %-10d %-10s  %n", users.indexOf(user) + 1, user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getAge(), ((Student) user).getGroup());
             }
         }
     }
 
     protected void displayTeachers(){
         System.out.printf("  LIST OF TEACHERS:\n%-2s %-10s %-10s %-15s %-10s \n", "Id", "FirstName", "Lastname", "Date of Birth", "Age");
-        int counter = 0;
         for(User user : users){
             if(user instanceof Teacher){
-                System.out.printf("%-2d %-10s %-10s %-15s %-10d  %n", counter, user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getAge());
+                System.out.printf("%-2d %-10s %-10s %-15s %-10d  %n", users.indexOf(user) + 1, user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getAge());
             }
         }
     }

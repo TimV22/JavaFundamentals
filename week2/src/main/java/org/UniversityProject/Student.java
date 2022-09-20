@@ -3,7 +3,7 @@ package org.UniversityProject;
 import java.time.LocalDate;
 
 public class Student extends User{
-    private String group;
+    private final String group;
     private int JavaMark;
     private int CSharpMark;
     private int PythonMark;
@@ -24,11 +24,8 @@ public class Student extends User{
     }
 
     //getters
-    public boolean getResult(){
-        if (JavaMark >= 55 && CSharpMark >= 55 && PythonMark >= 55 && PHPMark >= 55){
-            return true;
-        }
-        return false;
+    public boolean getPassed(){
+        return JavaMark >= 55 && CSharpMark >= 55 && PythonMark >= 55 && PHPMark >= 55;
     }
     public int getRetakes(){
         int retakes = 0;
@@ -82,4 +79,5 @@ public class Student extends User{
     public void setPHPMark(int PHPMark) {
         this.PHPMark = PHPMark;
     }
+
 }
