@@ -13,7 +13,7 @@ public class AdminAccess extends EditorAccess{
     protected void start(){
         Scanner scanner = new Scanner(System.in);
         while(true){
-            System.out.println("S. Display Students | T. Display Teachers | A. Add Students | R. Display Results | X. Exit");
+            System.out.println("S. Display Students | T. Display Teachers | A. Add Students or Teacher | D. Delete Student or Teacher | R. Display Results | X. Exit");
             System.out.print("Please enter your choice: ");
             char choice = scanner.next().toLowerCase().charAt(0);
             switch (choice) {
